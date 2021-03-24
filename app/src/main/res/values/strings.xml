@@ -4,4 +4,19 @@
     <string name="selectStudent">生徒情報一覧</string>
     <string name="insertGrades">成績入力</string>
     <string name="selectGrades">成績一覧</string>
+    <string name="newInput">新規入力</string>
+    <string name="back">戻る</string>
+    <string name="save">保存</string>
+    <string name="date">登録日</string>
+    <string name="name">氏名</string>
+    <string name="ruby">ふりがな</string>
+    <string name="birthday">生年月日</string>
+    <string name="code">〒</string>
+    <string name="address">住所</string>
+    <string name="selectAddress">住所検索</string>
+    <string name="contact">連絡先</string>
+    <string name="mail">e-mail</string>
+    <string name="sex">性別</string>
+    <string name="school">学校名</string>
+    <string name="schoolYear">学年</string>
 </resources>
