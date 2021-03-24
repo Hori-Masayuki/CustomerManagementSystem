@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b2b2b2"
     android:orientation="vertical"
     android:weightSum="10"
-    android:background="#b2b2b2"
     tools:context=".MainActivity">
 
     <TextView
@@ -18,7 +18,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:background="@color/black"></View>
 
     <Space
@@ -40,6 +40,8 @@
             android:layout_weight="8"
             android:background="@drawable/button_state"
             android:text="@string/insertStudent"
+            android:textColor="@color/white"
+            android:onClick="insertStudent"
             android:textSize="30sp"></Button>
     </LinearLayout>
 
@@ -55,8 +57,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="8"
-            android:text="@string/insertStudent"
             android:background="@drawable/button_state"
+            android:text="@string/selectStudent"
+            android:textColor="@color/white"
+            android:onClick="selectStudent"
             android:textSize="30sp"></Button>
     </LinearLayout>
 
@@ -72,8 +76,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="8"
-            android:text="@string/insertStudent"
             android:background="@drawable/button_state"
+            android:text="@string/insertGrades"
+            android:textColor="@color/white"
+            android:onClick="insertGrades"
             android:textSize="30sp"></Button>
     </LinearLayout>
 
@@ -89,8 +95,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="8"
-            android:text="@string/insertStudent"
             android:background="@drawable/button_state"
+            android:text="@string/selectGrades"
+            android:textColor="@color/white"
+            android:onClick="selectGrades"
             android:textSize="30sp"></Button>
     </LinearLayout>
 
