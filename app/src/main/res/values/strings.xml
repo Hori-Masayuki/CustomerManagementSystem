@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">CustomerManagementSystem</string>
+    <string name="app_name">生徒管理システム</string>
+    <string name="insertStudent">生徒情報入力</string>
+    <string name="selectStudent">生徒情報一覧</string>
+    <string name="insertGrades">成績入力</string>
+    <string name="selectGrades">成績一覧</string>
 </resources>
