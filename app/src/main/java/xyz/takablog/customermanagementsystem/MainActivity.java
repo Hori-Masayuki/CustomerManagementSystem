@@ -14,8 +14,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void insertStudent(View view){
-        Intent intent = new Intent(MainActivity.this,InsertStudentActivity.class);
+    public void insertStudent(View view) {
+        Intent intent = new Intent(MainActivity.this, InsertStudentActivity.class);
+        startActivity(intent);
+    }
+
+    public void insertGrades(View view) {
+        Intent intent = new Intent(MainActivity.this, InsertGradesActivity.class);
+        startActivity(intent);
+    }
+
+    public void selectStudent(View view) {
+        Intent intent = new Intent(MainActivity.this, SelectStudentActivity.class);
+        startActivity(intent);
+    }
+
+    public void selectGrades(View view) {
+        Intent intent = new Intent(MainActivity.this, SelectGradesActivity.class);
         startActivity(intent);
     }
 }
