@@ -5,6 +5,7 @@
     <string name="insertGrades">成績入力</string>
     <string name="selectGrades">成績一覧</string>
     <string name="newInput">新規入力</string>
+    <string name="newInputGrades">成績入力</string>
     <string name="back">戻る</string>
     <string name="save">保存</string>
     <string name="date">登録日</string>
@@ -18,5 +19,22 @@
     <string name="mail">e-mail</string>
     <string name="sex">性別</string>
     <string name="school">学校名</string>
-    <string name="schoolYear">学年</string>
+    <string name="year">学年</string>
+    <string name="notFindAddress">住所が見つかりません</string>
+    <string name="student">生徒名</string>
+    <string name="testDate">試験日</string>
+    <string name="testName">試験名</string>
+    <string name="japanese">国語</string>
+    <string name="math">数学</string>
+    <string name="science">理科</string>
+    <string name="society">社会</string>
+    <string name="english">英語</string>
+    <string name="music">音楽</string>
+    <string name="physical">保体</string>
+    <string name="art">美術</string>
+    <string name="techHome">技家</string>
+    <string name="notSave">保存出来ませんでした</string>
+    <string name="onSave">保存しました</string>
+    <string name="contentNotSaved">内容は保存されません</string>
+    <string name="ok">OK</string>
 </resources>
