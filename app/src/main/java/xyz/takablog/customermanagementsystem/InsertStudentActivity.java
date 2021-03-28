@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,8 @@ import xyz.takablog.customermanagementsystem.helper.OpenHelper;
 
 public class InsertStudentActivity extends AppCompatActivity implements TextWatcher {
 
-    EditText date, name, ruby, birthday, sex, code, address1, address2, contact, mail, school, year;
+    EditText date, name, ruby, birthday, code, address1, address2, contact, mail, school;
+    Spinner year, sex;
     AsyncNetworkTask task;
 
     @Override
@@ -38,6 +40,7 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
         birthday = findViewById(R.id.birthday);
         sex = findViewById(R.id.sex);
         code = findViewById(R.id.code);
+        code.addTextChangedListener(this);
         address1 = findViewById(R.id.address1);
         address2 = findViewById(R.id.address2);
         contact = findViewById(R.id.contact);
@@ -62,6 +65,10 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
     }
 
     public void save(View view) {
+        if (name.getText().toString().length() == 0) {
+            Toast.makeText(this, R.string.writeName, Toast.LENGTH_SHORT).show();
+            return;
+        }
         SQLiteDatabase database = null;
         try {
             OpenHelper helper = new OpenHelper(InsertStudentActivity.this);
@@ -71,14 +78,14 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
             contentValues.put("name", name.getText().toString());
             contentValues.put("ruby", ruby.getText().toString());
             contentValues.put("birthday", birthday.getText().toString());
-            contentValues.put("sex", sex.getText().toString());
+            contentValues.put("sex", (String) sex.getSelectedItem());
             contentValues.put("address1", address1.getText().toString());
             contentValues.put("address2", address2.getText().toString());
             contentValues.put("code", code.getText().toString());
             contentValues.put("contact", contact.getText().toString());
             contentValues.put("mail", mail.getText().toString());
             contentValues.put("school", school.getText().toString());
-            contentValues.put("year", year.getText().toString());
+            contentValues.put("year", (String) year.getSelectedItem());
             database.insert("students", null, contentValues);
         } catch (Exception e) {
             Toast.makeText(InsertStudentActivity.this, R.string.notSave, Toast.LENGTH_SHORT).show();
@@ -86,6 +93,7 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
         }
         database.close();
         Toast.makeText(InsertStudentActivity.this, R.string.onSave, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
