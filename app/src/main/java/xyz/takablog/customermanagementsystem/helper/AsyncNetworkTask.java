@@ -3,6 +3,7 @@ package xyz.takablog.customermanagementsystem.helper;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,10 +19,11 @@ import xyz.takablog.customermanagementsystem.R;
 public class AsyncNetworkTask extends AsyncTask<String, Integer, String> {
 
     public WeakReference<TextView> address1;
+    public InsertStudentActivity activity;
 
     public AsyncNetworkTask(Context context) {
         super();
-        InsertStudentActivity activity = (InsertStudentActivity) context;
+        activity = (InsertStudentActivity) context;
         address1 = new WeakReference<>((TextView) activity.findViewById(R.id.address1));
     }
 
@@ -46,6 +48,14 @@ public class AsyncNetworkTask extends AsyncTask<String, Integer, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        address1.get().setText(s);
+        String[] arr = s.split("\\\"");
+        try {
+            String tmp = arr[7];
+            tmp += arr[11];
+            tmp += arr[15];
+            address1.get().setText(tmp);
+        }catch (Exception e){
+            Toast.makeText(activity,R.string.notFindAddress,Toast.LENGTH_SHORT).show();
+        }
     }
 }
