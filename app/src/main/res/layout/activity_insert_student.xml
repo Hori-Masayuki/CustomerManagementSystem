@@ -54,8 +54,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -66,7 +66,7 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/date"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <EditText
                 android:id="@+id/date"
@@ -75,14 +75,14 @@
                 android:layout_weight="8"
                 android:background="@color/white"
                 android:paddingLeft="20dp"
-                android:textSize="16sp"></EditText>
+                android:textSize="12sp"></EditText>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -93,24 +93,25 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/name"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <EditText
                 android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:paddingLeft="20dp"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:paddingLeft="20dp"
+                android:hint="@string/mustInput"
+                android:textSize="12sp"></EditText>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
             android:weightSum="10">
 
             <TextView
@@ -120,24 +121,24 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/ruby"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <EditText
                 android:id="@+id/ruby"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:paddingLeft="20dp"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:paddingLeft="20dp"
+                android:textSize="12sp"></EditText>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
             android:weightSum="10">
 
             <TextView
@@ -147,42 +148,45 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/birthday"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <EditText
                 android:id="@+id/birthday"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.5"
-                android:paddingLeft="20dp"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:hint="1990/04/01"
+                android:paddingLeft="20dp"
+                android:textSize="12sp"></EditText>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/sex"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
-            <EditText
+            <Spinner
                 android:id="@+id/sex"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2.5"
-                android:paddingLeft="20dp"
+                android:entries="@array/sexList"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:paddingLeft="20dp"
+                android:textSize="12sp"></Spinner>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="3"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
             android:weightSum="10">
 
             <TextView
@@ -192,7 +196,7 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/address"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -212,9 +216,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
+                        android:background="@color/white"
                         android:gravity="center"
                         android:text="@string/code"
-                        android:background="@color/white"
                         android:textSize="16sp"></TextView>
 
                     <EditText
@@ -222,9 +226,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8"
-                        android:paddingLeft="20dp"
                         android:background="@color/white"
-                        android:textSize="16sp"></EditText>
+                        android:hint="1234567"
+                        android:textSize="12sp"></EditText>
                 </LinearLayout>
 
                 <EditText
@@ -232,27 +236,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:paddingLeft="20dp"
                     android:background="@color/white"
-                    android:textSize="16sp"></EditText>
+                    android:paddingLeft="20dp"
+                    android:hint="@string/address1"
+                    android:textSize="12sp"></EditText>
 
                 <EditText
                     android:id="@+id/address2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:paddingLeft="20dp"
                     android:background="@color/white"
-                    android:textSize="16sp"></EditText>
+                    android:paddingLeft="20dp"
+                    android:hint="@string/address2"
+                    android:textSize="12sp"></EditText>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
             android:weightSum="10">
 
             <TextView
@@ -262,24 +268,25 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/contact"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <EditText
                 android:id="@+id/contact"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:paddingLeft="20dp"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:paddingLeft="20dp"
+                android:hint="090-1234-5678"
+                android:textSize="12sp"></EditText>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
             android:weightSum="10">
 
             <TextView
@@ -289,24 +296,24 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/mail"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <EditText
                 android:id="@+id/mail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:paddingLeft="20dp"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:paddingLeft="20dp"
+                android:textSize="12sp"></EditText>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
             android:weightSum="10">
 
             <TextView
@@ -316,24 +323,24 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/school"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
             <EditText
                 android:id="@+id/school"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:paddingLeft="20dp"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:paddingLeft="20dp"
+                android:textSize="12sp"></EditText>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="4dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
             android:weightSum="10">
 
             <TextView
@@ -343,16 +350,17 @@
                 android:background="@drawable/button_2"
                 android:gravity="center"
                 android:text="@string/year"
-                android:textSize="16sp"></TextView>
+                android:textSize="12sp"></TextView>
 
-            <EditText
+            <Spinner
                 android:id="@+id/year"
+                android:entries="@array/yearList"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:paddingLeft="20dp"
                 android:background="@color/white"
-                android:textSize="16sp"></EditText>
+                android:paddingLeft="20dp"
+                android:textSize="12sp"></Spinner>
 
         </LinearLayout>
 
