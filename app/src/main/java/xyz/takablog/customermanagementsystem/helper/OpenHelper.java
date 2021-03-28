@@ -8,9 +8,33 @@ public class OpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "DATABASE";
     public static final int VERSION = 1;
     public static final String CREATE_TABLE_STUDENT =
-            "CREATE TABLE 'students' ('_id' INTEGER PRIMARY KEY AUTOINCREMENT , 'date' TEXT , 'name' TEXT, 'ruby' TEXT, 'birthday' TEXT , 'sex' TEXT, 'address1' TEXT,'address2' TEXT , 'code' INTEGER , 'contact' TEXT, 'mail' TEXT, 'school' TEXT, 'year' TEXT);";
+            "CREATE TABLE 'students' ('_id' INTEGER PRIMARY KEY AUTOINCREMENT ," +
+                    " 'date' TEXT ," +
+                    " 'name' TEXT," +
+                    " 'ruby' TEXT," +
+                    " 'birthday' TEXT ," +
+                    " 'sex' TEXT," +
+                    " 'address1' TEXT," +
+                    "'address2' TEXT ," +
+                    " 'code' INTEGER ," +
+                    " 'contact' TEXT," +
+                    " 'mail' TEXT," +
+                    " 'school' TEXT," +
+                    " 'year' TEXT);";
     public static final String CREATE_TABLE_GRADES =
-            "CREATE TABLE 'grades' ('grades_id' INTEGER PRIMARY KEY AUTOINCREMENT , '_id' INTEGER , 'testDate' TEXT, 'testName' TEXT,'japanese' INTEGER,'math' INTEGER,'science' INTEGER,'society' INTEGER,'english' INTEGER,'music' INTEGER,'physical' INTEGER,'art' INTEGER,'techHome' INTEGER);";
+            "CREATE TABLE 'grades' ('grades_id' INTEGER PRIMARY KEY AUTOINCREMENT ," +
+                    " '_id' INTEGER ," +
+                    " 'testDate' TEXT," +
+                    " 'testName' TEXT," +
+                    "'japanese' INTEGER," +
+                    "'math' INTEGER," +
+                    "'science' INTEGER," +
+                    "'society' INTEGER," +
+                    "'english' INTEGER," +
+                    "'music' INTEGER," +
+                    "'physical' INTEGER," +
+                    "'art' INTEGER," +
+                    "'techHome' INTEGER);";
     public static final String DROP_TABLE_STUDENT = "drop table student;";
     public static final String DROP_TABLE_GRADES = "drop table grades;";
 
