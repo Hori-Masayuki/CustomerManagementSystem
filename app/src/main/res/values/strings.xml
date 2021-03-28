@@ -2,6 +2,7 @@
     <string name="app_name">生徒管理システム</string>
     <string name="insertStudent">生徒情報入力</string>
     <string name="selectStudent">生徒情報一覧</string>
+    <string name="updateStudent">生徒情報更新</string>
     <string name="insertGrades">成績入力</string>
     <string name="selectGrades">成績一覧</string>
     <string name="newInput">新規入力</string>
@@ -35,6 +36,36 @@
     <string name="techHome">技家</string>
     <string name="notSave">保存出来ませんでした</string>
     <string name="onSave">保存しました</string>
+    <string name="onDelete">削除しました</string>
+    <string name="notDelete">削除出来ませんでした</string>
     <string name="contentNotSaved">内容は保存されません</string>
+    <string name="onUpdate">更新しました</string>
+    <string name="notUpdate">更新出来ませんでした</string>
+    <string name="isDelete">削除してもよろしいですか？</string>
     <string name="ok">OK</string>
+    <string name="mustInput">※要入力</string>
+    <string name="address1">アドレス１</string>
+    <string name="address2">アドレス２</string>
+    <string name="writeName">名前を入力してください</string>
+    <string name="update">更新</string>
+    <string name="delete">削除</string>
+    <string-array name="yearList">
+        <item>小1</item>
+        <item>小2</item>
+        <item>小3</item>
+        <item>小4</item>
+        <item>小5</item>
+        <item>小6</item>
+        <item>中1</item>
+        <item>中2</item>
+        <item>中3</item>
+        <item>高1</item>
+        <item>高2</item>
+        <item>高3</item>
+    </string-array>
+    <string-array name="sexList">
+        <item>男</item>
+        <item>女</item>
+        <item>無回答</item>
+    </string-array>
 </resources>
