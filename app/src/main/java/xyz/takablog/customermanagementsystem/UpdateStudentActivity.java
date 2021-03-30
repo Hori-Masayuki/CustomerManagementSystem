@@ -122,7 +122,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
         String rubyText = ruby.getText().toString();
         String birthdayText = birthday.getText().toString();
         String sexText = sex.getText().toString();
-        String codeText = code.getText().toString();
+        Integer codeText = Integer.parseInt(code.getText().toString());
         String address1Text = address1.getText().toString();
         String address2Text = address2.getText().toString();
         String contactText = contact.getText().toString();
@@ -135,31 +135,31 @@ public class UpdateStudentActivity extends AppCompatActivity {
             databaseUpdate = helperUpdate.getWritableDatabase();
 
             ContentValues contentValues = new ContentValues();
-            contentValues.put("date",dateText);
-            contentValues.put("name",nameText);
-            contentValues.put("ruby",rubyText);
-            contentValues.put("birthday",birthdayText);
-            contentValues.put("sex",sexText);
-            contentValues.put("code",codeText);
-            contentValues.put("address1",address1Text);
-            contentValues.put("address2",address2Text);
-            contentValues.put("contact",contactText);
-            contentValues.put("mail",mailText);
-            contentValues.put("school",schoolText);
-            contentValues.put("year",yearText);
+            contentValues.put("date", dateText);
+            contentValues.put("name", nameText);
+            contentValues.put("ruby", rubyText);
+            contentValues.put("birthday", birthdayText);
+            contentValues.put("sex", sexText);
+            contentValues.put("code", codeText);
+            contentValues.put("address1", address1Text);
+            contentValues.put("address2", address2Text);
+            contentValues.put("contact", contactText);
+            contentValues.put("mail", mailText);
+            contentValues.put("school", schoolText);
+            contentValues.put("year", yearText);
 
             int updateCount = databaseUpdate.update("students",
                     contentValues,
                     "_id=?",
-                    new String[]{String.valueOf(getIntent().getLongExtra("id",0L))});
+                    new String[]{String.valueOf(getIntent().getLongExtra("id", 0L))});
 
-            if (updateCount == 1){
-                Toast.makeText(this,R.string.onUpdate,Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(this,R.string.notUpdate,Toast.LENGTH_SHORT).show();
+            if (updateCount == 1) {
+                Toast.makeText(this, R.string.onUpdate, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, R.string.notUpdate, Toast.LENGTH_SHORT).show();
             }
             finish();
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         databaseUpdate.close();
     }
