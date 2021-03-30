@@ -31,6 +31,8 @@ public class OpenHelper extends SQLiteOpenHelper {
                     "'science' INTEGER," +
                     "'society' INTEGER," +
                     "'english' INTEGER," +
+                    "'total5' INTEGER,"+
+                    "'total9' INTEGER,"+
                     "'music' INTEGER," +
                     "'physical' INTEGER," +
                     "'art' INTEGER," +
