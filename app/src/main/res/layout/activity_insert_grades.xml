@@ -68,14 +68,14 @@
                 android:text="@string/student"
                 android:textSize="16sp"></TextView>
 
-            <EditText
-                android:id="@+id/student"
+            <Spinner
+                android:id="@+id/studentId"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:background="@color/white"
                 android:paddingLeft="20dp"
-                android:textSize="16sp"></EditText>
+                android:textSize="16sp"></Spinner>
         </LinearLayout>
 
         <LinearLayout
@@ -142,34 +142,39 @@
                 android:layout_height="wrap_content"
                 android:weightSum="5">
 
-                <TextView android:text="@string/english"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/english"
                     android:textSize="24sp"></TextView>
 
-                <TextView android:text="@string/math"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/math"
                     android:textSize="24sp"></TextView>
 
-                <TextView android:text="@string/japanese"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/japanese"
                     android:textSize="24sp"></TextView>
 
-                <TextView android:text="@string/science"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/science"
                     android:textSize="24sp"></TextView>
 
-                <TextView android:text="@string/society"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/society"
                     android:textSize="24sp"></TextView>
             </TableRow>
 
@@ -178,33 +183,43 @@
                 android:layout_height="wrap_content"
                 android:weightSum="5">
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/english"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
                     android:textSize="24sp"></EditText>
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/math"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
                     android:textSize="24sp"></EditText>
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/japanese"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
                     android:textSize="24sp"></EditText>
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/science"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
                     android:textSize="24sp"></EditText>
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/society"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
                     android:textSize="24sp"></EditText>
             </TableRow>
@@ -221,28 +236,32 @@
                 android:layout_height="wrap_content"
                 android:weightSum="5">
 
-                <TextView android:text="@string/music"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/music"
                     android:textSize="24sp"></TextView>
 
-                <TextView android:text="@string/physical"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/physical"
                     android:textSize="24sp"></TextView>
 
-                <TextView android:text="@string/techHome"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/techHome"
                     android:textSize="24sp"></TextView>
 
-                <TextView android:text="@string/art"
-                    android:background="@drawable/button_2"
+                <TextView
                     android:layout_weight="1"
+                    android:background="@drawable/button_2"
                     android:gravity="center"
+                    android:text="@string/art"
                     android:textSize="24sp"></TextView>
 
             </TableRow>
@@ -252,28 +271,40 @@
                 android:layout_height="wrap_content"
                 android:weightSum="5">
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/music"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
+                    android:text="0"
                     android:textSize="24sp"></EditText>
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/physical"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
+                    android:text="0"
                     android:textSize="24sp"></EditText>
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/techHome"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
+                    android:text="0"
                     android:textSize="24sp"></EditText>
 
-                <EditText android:background="@color/white"
+                <EditText
+                    android:id="@+id/art"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:gravity="center"
+                    android:text="0"
                     android:textSize="24sp"></EditText>
 
             </TableRow>
