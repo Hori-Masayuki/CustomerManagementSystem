@@ -11,13 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity android:name=".GradesListActivity"></activity>
-        <activity android:name=".UpdateStudentActivity" />
-        <activity android:name=".SelectGradesActivity" />
-        <activity android:name=".SelectStudentActivity" />
-        <activity android:name=".InsertGradesActivity" />
-        <activity android:name=".InsertStudentActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".GradesListActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".UpdateStudentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectGradesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectStudentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InsertGradesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InsertStudentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
