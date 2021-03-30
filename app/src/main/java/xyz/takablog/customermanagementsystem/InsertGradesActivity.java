@@ -99,7 +99,8 @@ public class InsertGradesActivity extends AppCompatActivity {
             Integer physicalText = Integer.parseInt(physical.getText().toString());
             Integer techHomeText = Integer.parseInt(techHome.getText().toString());
             Integer artText = Integer.parseInt(art.getText().toString());
-
+            Integer total5 = englishText + mathText + japaneseText + scienceText + societyText;
+            Integer total9 = total5 + musicText + physicalText + techHomeText + artText;
 
             OpenHelper helper = new OpenHelper(this);
             database = helper.getWritableDatabase();
@@ -117,6 +118,8 @@ public class InsertGradesActivity extends AppCompatActivity {
             contentValues.put("physical", physicalText);
             contentValues.put("art", artText);
             contentValues.put("techHome", techHomeText);
+            contentValues.put("total5", total5);
+            contentValues.put("total9", total9);
 
             database.insert("grades", null, contentValues);
         } catch (Exception e) {

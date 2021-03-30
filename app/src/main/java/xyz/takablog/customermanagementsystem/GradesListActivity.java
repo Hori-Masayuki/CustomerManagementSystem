@@ -2,18 +2,21 @@ package xyz.takablog.customermanagementsystem;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import xyz.takablog.customermanagementsystem.helper.OpenHelper;
 
 public class GradesListActivity extends android.app.ListActivity {
 
-    TextView english, math, japanese, science, society, music, physical, techHome, art, total5, total9, name;
+    TextView name;
     OpenHelper helper;
     SQLiteDatabase database;
     Cursor cursor;
@@ -25,19 +28,7 @@ public class GradesListActivity extends android.app.ListActivity {
         setContentView(R.layout.activity_grades_list);
 
         id = getIntent().getLongExtra("id", 0L);
-
         name = findViewById(R.id.gradesName);
-        english = findViewById(R.id.english);
-        math = findViewById(R.id.math);
-        japanese = findViewById(R.id.japanese);
-        science = findViewById(R.id.science);
-        society = findViewById(R.id.society);
-        music = findViewById(R.id.music);
-        physical = findViewById(R.id.physical);
-        techHome = findViewById(R.id.techHome);
-        art = findViewById(R.id.art);
-        total5 = findViewById(R.id.total5);
-        total9 = findViewById(R.id.total9);
 
         helper = null;
         database = null;
@@ -66,7 +57,9 @@ public class GradesListActivity extends android.app.ListActivity {
                             "music",
                             "physical",
                             "techHome",
-                            "art"},
+                            "art",
+                            "total5",
+                            "total9"},
                     new int[]{R.id.testDate,
                             R.id.testName,
                             R.id.english,
@@ -77,12 +70,15 @@ public class GradesListActivity extends android.app.ListActivity {
                             R.id.music,
                             R.id.physical,
                             R.id.techHome,
-                            R.id.art},
+                            R.id.art,
+                            R.id.total5,
+                            R.id.total9},
                     CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             setListAdapter(adapter);
         } catch (Exception e) {
         }
         database.close();
+
     }
 
     @Override
@@ -120,4 +116,5 @@ public class GradesListActivity extends android.app.ListActivity {
     public void back(View view) {
         finish();
     }
+
 }
