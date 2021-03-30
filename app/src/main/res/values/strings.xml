@@ -7,6 +7,7 @@
     <string name="selectGrades">成績一覧</string>
     <string name="newInput">新規入力</string>
     <string name="newInputGrades">成績入力</string>
+    <string name="grades">成績</string>
     <string name="back">戻る</string>
     <string name="save">保存</string>
     <string name="date">登録日</string>
@@ -24,6 +25,8 @@
     <string name="notFindAddress">住所が見つかりません</string>
     <string name="student">生徒名</string>
     <string name="testDate">試験日</string>
+    <string name="total5">5教科合計</string>
+    <string name="total9">9教科合計</string>
     <string name="testName">試験名</string>
     <string name="japanese">国語</string>
     <string name="math">数学</string>
