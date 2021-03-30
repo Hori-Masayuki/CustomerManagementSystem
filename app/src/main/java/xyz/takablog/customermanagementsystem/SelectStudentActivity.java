@@ -1,8 +1,5 @@
 package xyz.takablog.customermanagementsystem;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
