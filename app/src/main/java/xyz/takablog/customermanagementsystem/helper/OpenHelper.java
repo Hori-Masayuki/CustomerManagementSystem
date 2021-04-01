@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class OpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "DATABASE";
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
     public static final String CREATE_TABLE_STUDENT =
             "CREATE TABLE 'students' ('_id' INTEGER PRIMARY KEY AUTOINCREMENT ," +
                     " 'date' TEXT ," +
@@ -37,7 +37,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                     "'physical' INTEGER," +
                     "'art' INTEGER," +
                     "'techHome' INTEGER);";
-    public static final String DROP_TABLE_STUDENT = "drop table student;";
+    public static final String DROP_TABLE_STUDENT = "drop table students;";
     public static final String DROP_TABLE_GRADES = "drop table grades;";
 
     public OpenHelper(Context context) {
