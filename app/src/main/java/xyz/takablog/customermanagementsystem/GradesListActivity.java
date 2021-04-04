@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ public class GradesListActivity extends android.app.ListActivity {
         setContentView(R.layout.activity_grades_list);
 
         id = getIntent().getLongExtra("id", 0L);
+
         name = findViewById(R.id.gradesName);
 
         helper = null;

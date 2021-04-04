@@ -45,8 +45,11 @@ public class SelectStudentActivity extends android.app.ListActivity {
                     CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             setListAdapter(adapter);
         } catch (Exception e) {
+        } finally {
+            if (database != null) {
+                database.close();
+            }
         }
-        database.close();
     }
 
     public void back(View view) {
@@ -55,8 +58,8 @@ public class SelectStudentActivity extends android.app.ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Intent intent = new Intent(this,UpdateStudentActivity.class);
-        intent.putExtra("id",id);
+        Intent intent = new Intent(this, UpdateStudentActivity.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 }

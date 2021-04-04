@@ -67,8 +67,11 @@ public class InsertGradesActivity extends AppCompatActivity {
                     CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             studentId.setAdapter(adapter);
         } catch (Exception e) {
+        } finally {
+            if (database != null) {
+                database.close();
+            }
         }
-        database.close();
     }
 
     public void back(View view) {

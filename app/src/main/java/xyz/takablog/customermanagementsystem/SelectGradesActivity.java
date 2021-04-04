@@ -45,18 +45,21 @@ public class SelectGradesActivity extends android.app.ListActivity {
                     R.layout.student_list,
                     cursor,
                     new String[]{"name", "year"},
-                    new int[]{R.id.listName,R.id.listYear},
+                    new int[]{R.id.listName, R.id.listYear},
                     CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             setListAdapter(adapter);
-        }catch (Exception e){
+        } catch (Exception e) {
+        } finally {
+            if (database != null) {
+                database.close();
+            }
         }
-        database.close();
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Intent intent = new Intent(this,GradesListActivity.class);
-        intent.putExtra("id",id);
+        Intent intent = new Intent(this, GradesListActivity.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 }

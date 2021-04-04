@@ -90,8 +90,11 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
         } catch (Exception e) {
             Toast.makeText(InsertStudentActivity.this, R.string.notSave, Toast.LENGTH_SHORT).show();
             return;
+        } finally {
+            if (database != null) {
+                database.close();
+            }
         }
-        database.close();
         Toast.makeText(InsertStudentActivity.this, R.string.onSave, Toast.LENGTH_SHORT).show();
         finish();
     }
