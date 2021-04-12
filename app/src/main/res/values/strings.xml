@@ -50,6 +50,7 @@
     <string name="address1">アドレス１</string>
     <string name="address2">アドレス２</string>
     <string name="writeName">名前を入力してください</string>
+    <string name="writeTestInfo">テスト日、テスト名を入力してください</string>
     <string name="update">更新</string>
     <string name="delete">削除</string>
     <string-array name="yearList">
