@@ -29,9 +29,10 @@ public class SelectGradesActivity extends android.app.ListActivity {
     protected void onResume() {
         super.onResume();
         SQLiteDatabase database = null;
+        OpenHelper helper = null;
 
         try {
-            OpenHelper helper = new OpenHelper(this);
+            helper = new OpenHelper(this);
             database = helper.getReadableDatabase();
 
             cursor = database.query("students",
@@ -52,6 +53,9 @@ public class SelectGradesActivity extends android.app.ListActivity {
         } finally {
             if (database != null) {
                 database.close();
+            }
+            if (helper != null) {
+                helper.close();
             }
         }
     }

@@ -18,6 +18,7 @@ import xyz.takablog.customermanagementsystem.helper.OpenHelper;
 public class UpdateStudentActivity extends AppCompatActivity {
 
     EditText date, name, ruby, birthday, sex, code, address1, address2, contact, mail, school, year;
+    Long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Long id = getIntent().getLongExtra("id", 0L);
+        id = getIntent().getLongExtra("id", 0L);
 
         OpenHelper helper = null;
         SQLiteDatabase database = null;
@@ -97,9 +98,17 @@ public class UpdateStudentActivity extends AppCompatActivity {
                 year.setText(tmp);
             }
         } catch (Exception e) {
+        } finally {
+            if (helper != null) {
+                helper.close();
+            }
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (database != null) {
+                database.close();
+            }
         }
-        cursor.close();
-        database.close();
     }
 
     public void back(View view) {
@@ -117,20 +126,27 @@ public class UpdateStudentActivity extends AppCompatActivity {
         SQLiteOpenHelper helperUpdate = null;
         SQLiteDatabase databaseUpdate = null;
 
-        String dateText = date.getText().toString();
-        String nameText = name.getText().toString();
-        String rubyText = ruby.getText().toString();
-        String birthdayText = birthday.getText().toString();
-        String sexText = sex.getText().toString();
-        Integer codeText = Integer.parseInt(code.getText().toString());
-        String address1Text = address1.getText().toString();
-        String address2Text = address2.getText().toString();
-        String contactText = contact.getText().toString();
-        String mailText = mail.getText().toString();
-        String schoolText = school.getText().toString();
-        String yearText = year.getText().toString();
-
+        if (name.getText().toString().length() < 1) {
+            Toast.makeText(this, R.string.writeName, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (code.getText().toString().length() < 1) {
+            code.setText("0");
+        }
         try {
+            String dateText = date.getText().toString();
+            String nameText = name.getText().toString();
+            String rubyText = ruby.getText().toString();
+            String birthdayText = birthday.getText().toString();
+            String sexText = sex.getText().toString();
+            Integer codeText = Integer.parseInt(code.getText().toString());
+            String address1Text = address1.getText().toString();
+            String address2Text = address2.getText().toString();
+            String contactText = contact.getText().toString();
+            String mailText = mail.getText().toString();
+            String schoolText = school.getText().toString();
+            String yearText = year.getText().toString();
+
             helperUpdate = new OpenHelper(this);
             databaseUpdate = helperUpdate.getWritableDatabase();
 
@@ -151,17 +167,22 @@ public class UpdateStudentActivity extends AppCompatActivity {
             int updateCount = databaseUpdate.update("students",
                     contentValues,
                     "_id=?",
-                    new String[]{String.valueOf(getIntent().getLongExtra("id", 0L))});
+                    new String[]{String.valueOf(id)});
 
             if (updateCount == 1) {
                 Toast.makeText(this, R.string.onUpdate, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, R.string.notUpdate, Toast.LENGTH_SHORT).show();
             }
             finish();
         } catch (Exception e) {
+            Toast.makeText(this, R.string.notUpdate, Toast.LENGTH_SHORT).show();
+        } finally {
+            if (databaseUpdate != null) {
+                databaseUpdate.close();
+            }
+            if (helperUpdate != null) {
+                helperUpdate.close();
+            }
         }
-        databaseUpdate.close();
     }
 
     public void delete(View view) {
@@ -173,16 +194,22 @@ public class UpdateStudentActivity extends AppCompatActivity {
 
             int deleteCount = databaseDelete.delete("students",
                     "_id=?",
-                    new String[]{String.valueOf(getIntent().getLongExtra("id", 0L))});
+                    new String[]{String.valueOf(id)});
 
             if (deleteCount == 1) {
                 Toast.makeText(this, R.string.onDelete, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, R.string.notDelete, Toast.LENGTH_SHORT).show();
             }
+
             finish();
         } catch (Exception e) {
+            Toast.makeText(this, R.string.notDelete, Toast.LENGTH_SHORT).show();
+        } finally {
+            if (helperDelete != null) {
+                helperDelete.close();
+            }
+            if (databaseDelete != null) {
+                databaseDelete.close();
+            }
         }
-        databaseDelete.close();
     }
 }

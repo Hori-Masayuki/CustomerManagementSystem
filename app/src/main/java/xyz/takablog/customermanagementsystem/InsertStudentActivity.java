@@ -69,9 +69,13 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
             Toast.makeText(this, R.string.writeName, Toast.LENGTH_SHORT).show();
             return;
         }
+        if (code.getText().toString().length() == 0) {
+            code.setText("0");
+        }
         SQLiteDatabase database = null;
+        OpenHelper helper = null;
         try {
-            OpenHelper helper = new OpenHelper(InsertStudentActivity.this);
+            helper = new OpenHelper(InsertStudentActivity.this);
             database = helper.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put("date", date.getText().toString());
@@ -81,7 +85,7 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
             contentValues.put("sex", (String) sex.getSelectedItem());
             contentValues.put("address1", address1.getText().toString());
             contentValues.put("address2", address2.getText().toString());
-            contentValues.put("code", code.getText().toString());
+            contentValues.put("code", Integer.parseInt(code.getText().toString()));
             contentValues.put("contact", contact.getText().toString());
             contentValues.put("mail", mail.getText().toString());
             contentValues.put("school", school.getText().toString());
@@ -93,6 +97,9 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
         } finally {
             if (database != null) {
                 database.close();
+            }
+            if (helper != null) {
+                helper.close();
             }
         }
         Toast.makeText(InsertStudentActivity.this, R.string.onSave, Toast.LENGTH_SHORT).show();

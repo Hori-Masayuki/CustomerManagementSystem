@@ -47,9 +47,10 @@ public class InsertGradesActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         SQLiteDatabase database = null;
+        OpenHelper helper = null;
 
         try {
-            OpenHelper helper = new OpenHelper(this);
+            helper = new OpenHelper(this);
             database = helper.getReadableDatabase();
 
             cursor = database.query("students",
@@ -71,6 +72,9 @@ public class InsertGradesActivity extends AppCompatActivity {
             if (database != null) {
                 database.close();
             }
+            if (helper != null) {
+                helper.close();
+            }
         }
     }
 
@@ -89,6 +93,39 @@ public class InsertGradesActivity extends AppCompatActivity {
     public void save(View view) {
 
         SQLiteDatabase database = null;
+        OpenHelper helper = null;
+
+        if (testDate.getText().toString().length() < 1 || testName.getText().toString().length() < 1) {
+            Toast.makeText(this, R.string.writeTestInfo, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (english.getText().toString().length() < 1) {
+            english.setText("0");
+        }
+        if (math.getText().toString().length() < 1) {
+            math.setText("0");
+        }
+        if (japanese.getText().toString().length() < 1) {
+            japanese.setText("0");
+        }
+        if (science.getText().toString().length() < 1) {
+            science.setText("0");
+        }
+        if (society.getText().toString().length() < 1) {
+            society.setText("0");
+        }
+        if (music.getText().toString().length() < 1) {
+            music.setText("0");
+        }
+        if (physical.getText().toString().length() < 1) {
+            physical.setText("0");
+        }
+        if (techHome.getText().toString().length() < 1) {
+            techHome.setText("0");
+        }
+        if (art.getText().toString().length() < 1) {
+            art.setText("0");
+        }
         try {
             Integer studentIdText = Integer.parseInt(((TextView) findViewById(R.id.spinnerId)).getText().toString());
             String testDateText = testDate.getText().toString();
@@ -105,7 +142,7 @@ public class InsertGradesActivity extends AppCompatActivity {
             Integer total5 = englishText + mathText + japaneseText + scienceText + societyText;
             Integer total9 = total5 + musicText + physicalText + techHomeText + artText;
 
-            OpenHelper helper = new OpenHelper(this);
+            helper = new OpenHelper(this);
             database = helper.getWritableDatabase();
 
             ContentValues contentValues = new ContentValues();
@@ -128,8 +165,14 @@ public class InsertGradesActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, R.string.notSave, Toast.LENGTH_SHORT).show();
             return;
+        } finally {
+            if (database != null) {
+                database.close();
+            }
+            if (helper != null) {
+                helper.close();
+            }
         }
-        database.close();
         Toast.makeText(this, R.string.onSave, Toast.LENGTH_SHORT).show();
         finish();
     }
