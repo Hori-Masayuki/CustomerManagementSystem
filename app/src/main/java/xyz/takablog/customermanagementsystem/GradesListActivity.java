@@ -78,9 +78,19 @@ public class GradesListActivity extends android.app.ListActivity {
                     CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             setListAdapter(adapter);
         } catch (Exception e) {
+            Log.e("表示","エラー");
+            e.printStackTrace();
+        } finally {
+            if (helper != null) {
+                helper.close();
+            }
+            if (database != null) {
+                database.close();
+            }
+            if (cursor != null) {
+                cursor.close();
+            }
         }
-        database.close();
-
     }
 
     @Override
@@ -108,11 +118,19 @@ public class GradesListActivity extends android.app.ListActivity {
                 name.setText(tmp);
             }
         } catch (Exception e) {
+            Log.e("表示","エラー");
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (database != null) {
+                database.close();
+            }
+            if (helper != null) {
+                helper.close();
+            }
         }
-        cursor.close();
-        database.close();
-
-
     }
 
     public void back(View view) {
