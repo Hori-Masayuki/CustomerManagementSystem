@@ -29,6 +29,7 @@ public class InsertGradesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_grades);
 
+//        EditTextを取得
         studentId = findViewById(R.id.studentId);
         testDate = findViewById(R.id.testDate);
         testName = findViewById(R.id.testName);
@@ -50,9 +51,11 @@ public class InsertGradesActivity extends AppCompatActivity {
         OpenHelper helper = null;
 
         try {
+//            helperとdatabaseを取得
             helper = new OpenHelper(this);
             database = helper.getReadableDatabase();
 
+//            databaseから取得した値をcursorに入れていく
             cursor = database.query("students",
                     null,
                     null,
@@ -60,6 +63,7 @@ public class InsertGradesActivity extends AppCompatActivity {
                     null,
                     null,
                     "year ASC");
+//            adapterに情報を入れ、スピナーにセットしていく
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                     R.layout.spinner_item,
                     cursor,
@@ -69,6 +73,7 @@ public class InsertGradesActivity extends AppCompatActivity {
             studentId.setAdapter(adapter);
         } catch (Exception e) {
         } finally {
+//            クローズ処理
             if (database != null) {
                 database.close();
             }
@@ -78,6 +83,7 @@ public class InsertGradesActivity extends AppCompatActivity {
         }
     }
 
+//    戻るボタンが押されたときに呼び出されるメソッド
     public void back(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.contentNotSaved)
@@ -90,15 +96,18 @@ public class InsertGradesActivity extends AppCompatActivity {
         builder.show();
     }
 
+//    保存が押されたときに呼び出されるメソッド
     public void save(View view) {
 
         SQLiteDatabase database = null;
         OpenHelper helper = null;
 
+//        テスト日、テスト名が空だった時の処理
         if (testDate.getText().toString().length() < 1 || testName.getText().toString().length() < 1) {
             Toast.makeText(this, R.string.writeTestInfo, Toast.LENGTH_SHORT).show();
             return;
         }
+//        点数がそれぞれ空だった時に0を代入する
         if (english.getText().toString().length() < 1) {
             english.setText("0");
         }
@@ -127,6 +136,7 @@ public class InsertGradesActivity extends AppCompatActivity {
             art.setText("0");
         }
         try {
+//            入力された値を取得
             Integer studentIdText = Integer.parseInt(((TextView) findViewById(R.id.spinnerId)).getText().toString());
             String testDateText = testDate.getText().toString();
             String testNameText = testName.getText().toString();
@@ -142,9 +152,11 @@ public class InsertGradesActivity extends AppCompatActivity {
             Integer total5 = englishText + mathText + japaneseText + scienceText + societyText;
             Integer total9 = total5 + musicText + physicalText + techHomeText + artText;
 
+//            helperとdatabaseを取得
             helper = new OpenHelper(this);
             database = helper.getWritableDatabase();
 
+//            contentValuesに値をセットしていく
             ContentValues contentValues = new ContentValues();
             contentValues.put("_id", studentIdText);
             contentValues.put("testDate", testDateText);
@@ -161,11 +173,13 @@ public class InsertGradesActivity extends AppCompatActivity {
             contentValues.put("total5", total5);
             contentValues.put("total9", total9);
 
+//            databaseに保存
             database.insert("grades", null, contentValues);
         } catch (Exception e) {
             Toast.makeText(this, R.string.notSave, Toast.LENGTH_SHORT).show();
             return;
         } finally {
+//            クローズ処理
             if (database != null) {
                 database.close();
             }
@@ -173,6 +187,7 @@ public class InsertGradesActivity extends AppCompatActivity {
                 helper.close();
             }
         }
+//        トースト表示
         Toast.makeText(this, R.string.onSave, Toast.LENGTH_SHORT).show();
         finish();
     }

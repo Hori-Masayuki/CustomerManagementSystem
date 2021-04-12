@@ -24,13 +24,16 @@ public class SelectStudentActivity extends android.app.ListActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         SQLiteDatabase database = null;
         OpenHelper helper = null;
 
         try {
+//            helperとdatabaseを取得
             helper = new OpenHelper(SelectStudentActivity.this);
             database = helper.getReadableDatabase();
 
+//            databaseにアクセスし、cursorに代入する
             cursor = database.query("students",
                     null,
                     null,
@@ -38,6 +41,7 @@ public class SelectStudentActivity extends android.app.ListActivity {
                     null,
                     null,
                     "year ASC");
+//            adapterに情報を入れて、リストにセットする
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(SelectStudentActivity.this,
                     R.layout.student_list,
                     cursor,
@@ -47,6 +51,7 @@ public class SelectStudentActivity extends android.app.ListActivity {
             setListAdapter(adapter);
         } catch (Exception e) {
         } finally {
+//            クローズ処理
             if (database != null) {
                 database.close();
             }
@@ -56,10 +61,12 @@ public class SelectStudentActivity extends android.app.ListActivity {
         }
     }
 
+    //    戻るボタンが押されたときの処理
     public void back(View view) {
         finish();
     }
 
+    //    生徒名が押されたときに詳細画面へ遷移するメソッド
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(this, UpdateStudentActivity.class);

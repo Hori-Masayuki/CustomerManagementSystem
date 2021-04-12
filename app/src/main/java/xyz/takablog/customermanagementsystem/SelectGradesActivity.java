@@ -21,6 +21,7 @@ public class SelectGradesActivity extends android.app.ListActivity {
         setContentView(R.layout.activity_select_grades);
     }
 
+//    戻るボタンが押されたときに呼び出されるメソッド
     public void back(View view) {
         finish();
     }
@@ -32,9 +33,11 @@ public class SelectGradesActivity extends android.app.ListActivity {
         OpenHelper helper = null;
 
         try {
+//            helperとdatabaseを取得
             helper = new OpenHelper(this);
             database = helper.getReadableDatabase();
 
+//            databaseの検索結果をcursorで取得
             cursor = database.query("students",
                     null,
                     null,
@@ -42,6 +45,7 @@ public class SelectGradesActivity extends android.app.ListActivity {
                     null,
                     null,
                     "year ASC");
+//            adapterに情報を入れて、リストにセットする
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                     R.layout.student_list,
                     cursor,
@@ -51,6 +55,7 @@ public class SelectGradesActivity extends android.app.ListActivity {
             setListAdapter(adapter);
         } catch (Exception e) {
         } finally {
+//            クローズ処理
             if (database != null) {
                 database.close();
             }
@@ -60,6 +65,7 @@ public class SelectGradesActivity extends android.app.ListActivity {
         }
     }
 
+//    生徒のidを持って、成績一覧画面へ遷移する
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(this, GradesListActivity.class);

@@ -34,6 +34,7 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_student);
 
+//        EditTextを取得
         date = findViewById(R.id.date);
         name = findViewById(R.id.name);
         ruby = findViewById(R.id.ruby);
@@ -48,11 +49,14 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
         school = findViewById(R.id.school);
         year = findViewById(R.id.year);
 
+//        dateに当日の日付を入力
         Date today = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
         date.setText(sdf.format(today));
     }
 
+    //    戻るボタンが押されたときに呼び出されるメソッド
+//    内容が保存されないことを表示してから、ホーム画面へ遷移する
     public void back(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(InsertStudentActivity.this);
         builder.setMessage(R.string.contentNotSaved)
@@ -64,20 +68,25 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
         builder.show();
     }
 
+    //    入力された値を保存するメソッド
     public void save(View view) {
+//        名前が空欄だった時の処理
         if (name.getText().toString().length() == 0) {
             Toast.makeText(this, R.string.writeName, Toast.LENGTH_SHORT).show();
             return;
         }
+//        郵便番号が空だった時の処理
         if (code.getText().toString().length() == 0) {
             code.setText("0");
         }
         SQLiteDatabase database = null;
         OpenHelper helper = null;
         try {
+//            helperとdatabaseとcontentValuesを取得
             helper = new OpenHelper(InsertStudentActivity.this);
             database = helper.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
+//            contentValuesに値を入れていく
             contentValues.put("date", date.getText().toString());
             contentValues.put("name", name.getText().toString());
             contentValues.put("ruby", ruby.getText().toString());
@@ -90,11 +99,14 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
             contentValues.put("mail", mail.getText().toString());
             contentValues.put("school", school.getText().toString());
             contentValues.put("year", (String) year.getSelectedItem());
+//            databaseに保存する
             database.insert("students", null, contentValues);
         } catch (Exception e) {
+//            エラーだった時の処理
             Toast.makeText(InsertStudentActivity.this, R.string.notSave, Toast.LENGTH_SHORT).show();
             return;
         } finally {
+//            クローズ処理
             if (database != null) {
                 database.close();
             }
@@ -102,6 +114,7 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
                 helper.close();
             }
         }
+//        保存完了時、トーストを表示
         Toast.makeText(InsertStudentActivity.this, R.string.onSave, Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -116,9 +129,11 @@ public class InsertStudentActivity extends AppCompatActivity implements TextWatc
 
     }
 
+    //    郵便番号が7桁になった時に呼び出されるメソッド
     @Override
     public void afterTextChanged(Editable s) {
         String inputCode = s.toString();
+//        非同期処理にて、住所を自動で入力する
         if (inputCode.length() == 7) {
             task = new AsyncNetworkTask(InsertStudentActivity.this);
             task.execute("https://zipcloud.ibsnet.co.jp/api/search?zipcode=" + inputCode);

@@ -5,8 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class OpenHelper extends SQLiteOpenHelper {
+//    databaseの名前
     public static final String DATABASE_NAME = "DATABASE";
+//    バージョン
     public static final int VERSION = 4;
+//    テーブル作成sql
     public static final String CREATE_TABLE_STUDENT =
             "CREATE TABLE 'students' ('_id' INTEGER PRIMARY KEY AUTOINCREMENT ," +
                     " 'date' TEXT ," +
@@ -21,6 +24,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                     " 'mail' TEXT," +
                     " 'school' TEXT," +
                     " 'year' TEXT);";
+//    テーブル作成sql
     public static final String CREATE_TABLE_GRADES =
             "CREATE TABLE 'grades' ('grades_id' INTEGER PRIMARY KEY AUTOINCREMENT ," +
                     " '_id' INTEGER ," +
@@ -37,6 +41,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                     "'physical' INTEGER," +
                     "'art' INTEGER," +
                     "'techHome' INTEGER);";
+//    テーブル削除sql
     public static final String DROP_TABLE_STUDENT = "drop table students;";
     public static final String DROP_TABLE_GRADES = "drop table grades;";
 

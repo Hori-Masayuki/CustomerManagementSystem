@@ -25,6 +25,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_student);
 
+//        EditTextを取得する
         date = findViewById(R.id.date);
         name = findViewById(R.id.name);
         ruby = findViewById(R.id.ruby);
@@ -42,6 +43,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+//        生徒のidをIntentから取得
         id = getIntent().getLongExtra("id", 0L);
 
         OpenHelper helper = null;
@@ -49,9 +51,11 @@ public class UpdateStudentActivity extends AppCompatActivity {
         Cursor cursor = null;
 
         try {
+//            helperとdatabaseを取得
             helper = new OpenHelper(this);
             database = helper.getReadableDatabase();
 
+//            生徒idから生徒情報を取得
             cursor = database.query("students",
                     null,
                     "_id=?",
@@ -59,6 +63,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
                     null,
                     null,
                     null);
+//            生徒情報をEditTextにセットしていく
             if (cursor.moveToFirst()) {
                 int columnIndex = cursor.getColumnIndex("date");
                 String tmp = cursor.getString(columnIndex);
@@ -99,6 +104,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
         } finally {
+//            クローズ処理
             if (helper != null) {
                 helper.close();
             }
@@ -111,6 +117,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
         }
     }
 
+//    戻るボタンが押されたときに呼び出されるメソッド
     public void back(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.contentNotSaved)
@@ -122,18 +129,22 @@ public class UpdateStudentActivity extends AppCompatActivity {
         builder.show();
     }
 
+//    更新ボタンが押されたときに呼び出されるメソッド
     public void update(View view) {
         SQLiteOpenHelper helperUpdate = null;
         SQLiteDatabase databaseUpdate = null;
 
+//        名前が空だった時の処理
         if (name.getText().toString().length() < 1) {
             Toast.makeText(this, R.string.writeName, Toast.LENGTH_SHORT).show();
             return;
         }
+//        郵便番号が空だった時の処理
         if (code.getText().toString().length() < 1) {
             code.setText("0");
         }
         try {
+//            入力された値を取得
             String dateText = date.getText().toString();
             String nameText = name.getText().toString();
             String rubyText = ruby.getText().toString();
@@ -147,9 +158,11 @@ public class UpdateStudentActivity extends AppCompatActivity {
             String schoolText = school.getText().toString();
             String yearText = year.getText().toString();
 
+//            helperとdatabaseを取得
             helperUpdate = new OpenHelper(this);
             databaseUpdate = helperUpdate.getWritableDatabase();
 
+//            contentValuesに値をセットしていく
             ContentValues contentValues = new ContentValues();
             contentValues.put("date", dateText);
             contentValues.put("name", nameText);
@@ -164,6 +177,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
             contentValues.put("school", schoolText);
             contentValues.put("year", yearText);
 
+//            更新処理
             int updateCount = databaseUpdate.update("students",
                     contentValues,
                     "_id=?",
@@ -176,6 +190,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, R.string.notUpdate, Toast.LENGTH_SHORT).show();
         } finally {
+//            クローズ処理
             if (databaseUpdate != null) {
                 databaseUpdate.close();
             }
@@ -185,13 +200,16 @@ public class UpdateStudentActivity extends AppCompatActivity {
         }
     }
 
+//    削除を押されたときに呼び出されるメソッド
     public void delete(View view) {
         SQLiteOpenHelper helperDelete = null;
         SQLiteDatabase databaseDelete = null;
         try {
+//            helperとdatabaseを取得
             helperDelete = new OpenHelper(this);
             databaseDelete = helperDelete.getWritableDatabase();
 
+//            削除処理
             int deleteCount = databaseDelete.delete("students",
                     "_id=?",
                     new String[]{String.valueOf(id)});
@@ -204,6 +222,7 @@ public class UpdateStudentActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, R.string.notDelete, Toast.LENGTH_SHORT).show();
         } finally {
+//            クローズ処理
             if (helperDelete != null) {
                 helperDelete.close();
             }

@@ -28,17 +28,21 @@ public class GradesListActivity extends android.app.ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grades_list);
 
+//        idを受け取る
         id = getIntent().getLongExtra("id", 0L);
 
+//        TextViewを取得
         name = findViewById(R.id.gradesName);
 
         helper = null;
         database = null;
         cursor = null;
         try {
+//            helperとdatabaseを取得
             helper = new OpenHelper(this);
             database = helper.getReadableDatabase();
 
+//            databaseの検索結果をcursorで取得
             cursor = database.query("grades",
                     null,
                     "_id=?",
@@ -46,6 +50,7 @@ public class GradesListActivity extends android.app.ListActivity {
                     null,
                     null,
                     null);
+//            adapterに情報を入れていく
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                     R.layout.grades_list,
                     cursor,
@@ -79,6 +84,7 @@ public class GradesListActivity extends android.app.ListActivity {
             setListAdapter(adapter);
         } catch (Exception e) {
         }
+//        クローズ処理
         database.close();
 
     }
@@ -92,9 +98,11 @@ public class GradesListActivity extends android.app.ListActivity {
         cursor = null;
 
         try {
+//            helperとdatabaseを取得
             helper = new OpenHelper(this);
             database = helper.getReadableDatabase();
 
+//            databaseの検索結果をcursorで取得
             cursor = database.query("students",
                     null,
                     "_id=?",
@@ -102,6 +110,8 @@ public class GradesListActivity extends android.app.ListActivity {
                     null,
                     null,
                     null);
+
+//            検索結果の名前をセットする
             if (cursor.moveToFirst()) {
                 int columnIndex = cursor.getColumnIndex("name");
                 String tmp = cursor.getString(columnIndex);
@@ -109,10 +119,12 @@ public class GradesListActivity extends android.app.ListActivity {
             }
         } catch (Exception e) {
         }
+//        クローズ処理
         cursor.close();
         database.close();
     }
 
+    //    戻るボタンが押されたときに呼び出されるメソッド
     public void back(View view) {
         finish();
     }
