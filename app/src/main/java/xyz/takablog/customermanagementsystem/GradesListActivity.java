@@ -111,8 +111,6 @@ public class GradesListActivity extends android.app.ListActivity {
         }
         cursor.close();
         database.close();
-
-
     }
 
     public void back(View view) {
