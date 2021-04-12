@@ -277,7 +277,6 @@
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:gravity="center"
-                    android:text="0"
                     android:textSize="24sp"></EditText>
 
                 <EditText
@@ -286,7 +285,6 @@
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:gravity="center"
-                    android:text="0"
                     android:textSize="24sp"></EditText>
 
                 <EditText
@@ -295,7 +293,6 @@
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:gravity="center"
-                    android:text="0"
                     android:textSize="24sp"></EditText>
 
                 <EditText
@@ -304,7 +301,6 @@
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:gravity="center"
-                    android:text="0"
                     android:textSize="24sp"></EditText>
 
             </TableRow>
