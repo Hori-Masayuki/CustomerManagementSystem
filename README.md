@@ -1,5 +1,5 @@
 ﻿#
 顧客情報を管理するためのアプリです
 
-StudentManagementSystemのAndroidアプリです
+StudentManagementSystemのAndroidアプリ版です
 https://github.com/Hori-Masayuki/StudentManagementSystem
